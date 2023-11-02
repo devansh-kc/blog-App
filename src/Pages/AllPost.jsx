@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import appwriteService from "../appWrite/Config";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Container, PostCard } from "../Components";
 
 function AllPost() {
@@ -11,7 +11,17 @@ function AllPost() {
       setPost(posts.documents);
     }
   });
-  useEffect(() => {}, []);
+  if (post.length === 0) {
+    return (
+      <div className="flex gap-6 gap-y-10 py-6 md:grid-cols-2 lg:grid-cols-3 justify-center text-center">
+        there are no post please go to{" "}
+        <Link to="/add-post" className="text-underline text-black">
+          Add-Post
+        </Link>{" "}
+        page and add some post
+      </div>
+    );
+  }
   return (
     <div>
       <Container>

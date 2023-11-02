@@ -3,7 +3,7 @@ import blog from "../assets/blogging.png";
 function Logo(width = "") {
   return (
     <div>
-      <img src={blog} alt="blog" className="w-24 " />
+      <img src={blog} alt="blog" className={`w-24  `} />
     </div>
   );
 }

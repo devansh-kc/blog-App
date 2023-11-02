@@ -31,6 +31,22 @@ class AuthService {
       throw error;
     }
   }
+  async createOAuthAccount() {
+    try {
+      const data = this.account.createOAuth2Session(
+        "google",
+        "http://localhost:5173",
+        "http://localhost:5173/login"
+      );
+      if (data) {
+        return this.login({ email, password });
+      } else {
+        return userAccount;
+      }
+    } catch (error) {
+      throw error;
+    }
+  }
 
   async login({ email, password }) {
     try {

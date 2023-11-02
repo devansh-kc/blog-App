@@ -1,31 +1,50 @@
 import React, { useState, useEffect } from "react";
 import appwriteService from "../appWrite/Config";
 import { Container, PostCard } from "../Components";
+import { useDispatch } from "react-redux";
+import { setstoreData } from "../Feature/DataSlice";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 function Home() {
+  const authStatus = useSelector((state) => state.auth.userData);
+  const [loading, setLoading] = useState(true);
   const [posts, setPosts] = useState([]);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   useEffect(() => {
-    appwriteService.getPosts().then((post) => {
-      if (post) {
-        setPosts(post.documents);
-      }
-    });
+    appwriteService
+      .getPosts()
+      .then((post) => {
+        if (post) {
+          setPosts(post.documents);
+          dispatch(setstoreData(post.documents));
+          setLoading(false);
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+      .finally(() => {
+        if (authStatus === null) {
+          navigate("/login");
+        }
+      });
   }, []);
-  if (posts.length === 0) {
+
+  if (posts?.length === 0) {
     return (
-      <div className="w-full py-8 mt-4 text-center">
+      <div className="w-full py-8 mt-4 text-center bg-tathini-dark">
         <Container>
-          <div className="flex flex-wrap">
-            <div className="p-2 w-full">
-              <h1 className="text-2xl font-bold hover:text-gray-500">
-                there is no post please add some post
-              </h1>
-            </div>
+          <div className="flex justify-center items-center">
+            <h3>there are no posts please add some post</h3>
           </div>
         </Container>
       </div>
     );
   }
+
   return (
     <div className="w-full py-8">
       <Container>

@@ -36,12 +36,12 @@ function Header() {
   ];
 
   return (
-    <header className="relative w-full bg-tahiti-light  p-4">
+    <header className="relative w-full  p-4 ">
       <Container>
         <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 py-2 sm:px-6 lg:px-8">
           <div className="inline-flex items-center space-x-2">
             <Link to="/">
-              <Logo width="70px" />
+              <Logo width="70px" className="text-white" />
             </Link>
           </div>
 

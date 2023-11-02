@@ -12,7 +12,6 @@ function RTE({ name, control, label, error, defaultValue = "" }) {
         control={control}
         render={({ field: { onChange } }) => (
           <Editor
-            apiKey={conf.tinyMceApiKey}
             init={{
               initialValue: defaultValue,
               height: 500,
