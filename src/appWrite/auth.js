@@ -35,8 +35,8 @@ class AuthService {
     try {
       const data = this.account.createOAuth2Session(
         "google",
-        "http://localhost:5173",
-        "http://localhost:5173/login"
+        conf.oAuthSuccess,
+        conf.oAuthFailure
       );
       if (data) {
         return this.login({ email, password });

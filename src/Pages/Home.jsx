@@ -31,7 +31,7 @@ function Home() {
           navigate("/login");
         }
       });
-  }, []);
+  }, [posts]);
 
   if (posts?.length === 0) {
     return (
@@ -44,7 +44,6 @@ function Home() {
       </div>
     );
   }
-
   return (
     <div className="w-full py-8">
       <Container>
