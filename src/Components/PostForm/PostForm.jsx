@@ -36,6 +36,7 @@ function PostForm({ post }) {
     } else {
       const file = await appwriteService.uploadFile(data.image[0]);
       if (file) {
+        // console.log(userData.$id);
         const fileId = file.$id;
         data.featuredImage = fileId;
         const dbPost = await appwriteService.createPost({
