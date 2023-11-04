@@ -103,14 +103,6 @@ function Login() {
             >
               Sign in
             </Button>
-
-            <Button
-              type="submit"
-              className="w-full p-3 border hover:duration-200 "
-              onClick={loginWithGoogle}
-            >
-              Sign in with Google
-            </Button>
           </div>
         </form>
       </div>
