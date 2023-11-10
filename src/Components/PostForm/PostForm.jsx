@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 import { Button, Input, Select, RTE } from "../index";
 
 function PostForm({ post }) {
-  const { register, watch, setValue, handleSubmit, control, getValues } =
+  const { register, handleSubmit, watch, setValue, control, getValues } =
     useForm({
       defaultValues: {
         title: post?.title || "",
@@ -19,6 +19,7 @@ function PostForm({ post }) {
   const userData = useSelector((state) => state.auth.userData);
 
   const submit = async (data) => {
+    console.log(data);
     if (post) {
       const file = data.image[0]
         ? await appwriteService.uploadFile(data.image[0])
@@ -36,11 +37,11 @@ function PostForm({ post }) {
     } else {
       const file = await appwriteService.uploadFile(data.image[0]);
       if (file) {
-        // console.log(userData.$id);
         const fileId = file.$id;
         data.featuredImage = fileId;
         const dbPost = await appwriteService.createPost({
           ...data,
+
           userId: userData.$id,
         });
         if (dbPost) {
@@ -70,7 +71,6 @@ function PostForm({ post }) {
 
     return () => subscription.unsubscribe();
   }, [watch, slugTransform, setValue]);
-
   return (
     <form onSubmit={handleSubmit(submit)} className="flex flex-wrap">
       <div className="w-2/3 px-2">
@@ -100,8 +100,7 @@ function PostForm({ post }) {
       </div>
       <div className="w-1/3 px-2">
         <Input
-          label="Image"
-          placeholder="Image"
+          label="Featured Image :"
           className="mb-4"
           accept="image/png, image/jpg, image/jpeg, image/gif"
           type="file"

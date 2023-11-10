@@ -30,9 +30,6 @@ function Home() {
         if (authStatus === null) {
           navigate("/login");
         }
-        if (authStatus) {
-          navigate("/");
-        }
       });
   }, [authStatus]);
 

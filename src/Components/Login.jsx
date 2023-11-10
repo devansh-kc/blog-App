@@ -22,6 +22,7 @@ function Login() {
       if (session) {
         const userData = await authservice.getCurrentUser();
         if (userData) {
+          console.log(userData);
           dispatch(authLogin(userData));
           navigate("/");
         }
@@ -31,21 +32,6 @@ function Login() {
     }
   };
 
-  const loginWithGoogle = async () => {
-    setError("");
-    try {
-      const googleLogin = await authservice.createOAuthAccount();
-      if (googleLogin) {
-        const data = await authservice.getCurrentUser();
-        if (data) {
-          dispatch(authLogin(googleLogin));
-          navigate("/");
-        }
-      }
-    } catch (error) {
-      throw error;
-    }
-  };
   return (
     <div className="flex items-center justify-center px-4 py-10 sm:px-6 sm:py-16 lg:px-8 lg:py-24 ">
       <div
