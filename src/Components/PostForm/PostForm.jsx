@@ -91,8 +91,8 @@ function PostForm({ post }) {
           }}
         />
         <RTE
-          label="Content :"
-          name="Content"
+          label="Content:"
+          name="content"
           control={control}
           defaultValue={getValues("content")}
         />
@@ -101,7 +101,7 @@ function PostForm({ post }) {
         <Input
           label="Featured Image :"
           className="mb-4"
-          accept="image/png, image/jpg, image/jpeg, image/gif"
+          accept="image/png, image/jpg, image/jpeg, image/gif, image/jfif"
           type="file"
           {...register("image", { required: !post })}
         />

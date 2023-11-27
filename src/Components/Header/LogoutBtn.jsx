@@ -12,7 +12,7 @@ function LogoutBtn() {
       .then((res) => {
         dispatch(logout(res));
       })
-      .catch((err) => console.log("LOGOUT BTN ERROR :", err));
+      .catch((err) => console.error(err));
   };
   return (
     <button

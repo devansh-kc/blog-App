@@ -28,7 +28,7 @@ export class Service {
         }
       );
     } catch (error) {
-      console.log("ERROR FROM APPRITE CREATE POST ::::::::", error);
+      throw error;
     }
   }
 
@@ -46,7 +46,7 @@ export class Service {
         }
       );
     } catch (error) {
-      console.log("ERROR FROM APPRITE UPDATE POST ::::::::", error);
+      throw error;
     }
   }
 
@@ -60,7 +60,6 @@ export class Service {
 
       return true;
     } catch (error) {
-      console.log("ERRROR FROM DELETE POST :::::::::::", error);
       throw error;
     }
 
@@ -74,8 +73,8 @@ export class Service {
         slug
       );
     } catch (error) {
-      console.log("ERROR FFROM THE GETPOST ::::", error);
-      return false;
+      throw error;
+      // return false;
     }
   }
   async getPosts(queries = [Query.equal("status", "active")]) {
@@ -86,8 +85,7 @@ export class Service {
         queries
       );
     } catch (error) {
-      console.log("ERROR GeTPOST :::", error);
-      return false;
+      throw error;
     }
   }
 
@@ -107,8 +105,7 @@ export class Service {
     try {
       await this.bucket.deleteFile(conf.appWriteBucketId, fileId);
     } catch (error) {
-      console.log("DELETE FILE ERROR :::", error);
-      return false;
+      throw error;
     }
   }
 
