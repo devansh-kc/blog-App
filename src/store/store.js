@@ -8,4 +8,5 @@ const store = configureStore({
     data: DataSlice,
   },
 });
+
 export default store;
