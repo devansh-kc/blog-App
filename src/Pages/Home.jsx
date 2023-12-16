@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import appwriteService from "../appWrite/Config";
 import { Container, PostCard } from "../Components";
 import { useDispatch } from "react-redux";
-import { setstoreData } from "../Feature/DataSlice";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
@@ -10,7 +9,7 @@ function Home() {
   const authStatus = useSelector((state) => state.auth.userData);
   const [loading, setLoading] = useState(true);
   const [posts, setPosts] = useState([]);
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -19,8 +18,9 @@ function Home() {
       .then((post) => {
         if (post) {
           setPosts(post.documents);
-          dispatch(setstoreData(post.documents));
           setLoading(false);
+          localStorage.setItem("Post", JSON.stringify(post.documents));
+          localStorage.getItem("Post");
         }
       })
       .catch((err) => {
@@ -31,7 +31,7 @@ function Home() {
           navigate("/login");
         }
       });
-  }, [authStatus]);
+  }, [authStatus, posts]);
 
   if (posts?.length === 0) {
     return (

@@ -3,7 +3,6 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import appwriteService from "../appWrite/Config";
 import { Button, Container } from "../Components";
 import { useSelector } from "react-redux";
-
 export default function Post() {
   const [post, setPost] = useState(null);
   const { slug } = useParams();
@@ -34,11 +33,11 @@ export default function Post() {
   return post ? (
     <div className="py-8">
       <Container>
-        <div className="w-full flex justify-center mb-4 relative border rounded-xl p-2">
+        <div className="w-full flex justify-center mb-4 relative  rounded-xl p-2">
           <img
             src={appwriteService.getFilePreview(post.featuredImage)}
             alt={post.title}
-            className="rounded-xl"
+            className="rounded-xl   w-2/4"
           />
 
           {isAuthor && (
@@ -54,7 +53,7 @@ export default function Post() {
             </div>
           )}
         </div>
-        <div className="w-full mb-6">
+        <div className="w-full mb-6 text-center justify-center">
           <h1 className="text-2xl font-bold">{post.title}</h1>
         </div>
         <div className="browser-css">{post.content}</div>
