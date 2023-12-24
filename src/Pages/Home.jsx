@@ -19,8 +19,6 @@ function Home() {
         if (post) {
           setPosts(post.documents);
           setLoading(false);
-          localStorage.setItem("Post", JSON.stringify(post.documents));
-          localStorage.getItem("Post");
         }
       })
       .catch((err) => {
