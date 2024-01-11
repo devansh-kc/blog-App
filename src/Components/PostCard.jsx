@@ -1,7 +1,8 @@
 import React from "react";
 import appwriteService from "../appWrite/Config";
 import { Link } from "react-router-dom";
-function PostCard({ $id, title, featuredImage }) {
+import parse from "html-react-parser";
+function PostCard({ $id, title, featuredImage, content }) {
   return (
     <Link to={`/post/${$id}`}>
       <div className="w-[300px] rounded-md hover:shadow-xl hover:duration-500 hover:ease-in-out hover:scale-125 ">
@@ -12,12 +13,7 @@ function PostCard({ $id, title, featuredImage }) {
         />
         <div className="p-4">
           <h2 className="text-lg font-semibold">{title}</h2>
-          <p className="mt-3 text-sm text-gray-600">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto
-            officia mollitia ipsum consequuntur, quo doloremque quaerat expedita
-            ut deserunt harum architecto error magnam optio vero, repudiandae
-            facere corrupti voluptatem facilis.
-          </p>
+          <p className="mt-3 text-sm text-gray-600">{parse(content)}</p>
         </div>
       </div>
     </Link>

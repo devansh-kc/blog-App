@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import appwriteService from "../appWrite/Config";
 import { Link, useNavigate } from "react-router-dom";
 import { Container, PostCard } from "../Components";
-
 function AllPost() {
   const [post, setPost] = useState([]);
 
