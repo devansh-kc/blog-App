@@ -92,10 +92,11 @@ export class Service {
   //   file upload servicce
   async uploadFile(file) {
     try {
-     Storage.createFile(
-      "65e70de5015e119eef67",
-      ID.unique()
-     )
+      return await this.bucket.createFile(
+        conf.appWriteBucketId,
+        ID.unique(),
+        file
+      );
     } catch (error) {
       throw error;
     }
