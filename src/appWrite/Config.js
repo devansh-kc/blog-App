@@ -1,5 +1,5 @@
 import { Client, Databases, ID, Storage, Query } from "appwrite";
-import conf from "../Conf/conf";
+import conf from "../Conf/conf.js";
 export class Service {
   client = new Client();
   databases;
@@ -92,11 +92,10 @@ export class Service {
   //   file upload servicce
   async uploadFile(file) {
     try {
-      return await this.bucket.createFile(
-        conf.appWriteBucketId,
-        ID.unique(),
-        file
-      );
+     Storage.createFile(
+      "65e70de5015e119eef67",
+      ID.unique()
+     )
     } catch (error) {
       throw error;
     }
