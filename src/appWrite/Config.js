@@ -28,7 +28,9 @@ export class Service {
         }
       );
     } catch (error) {
+      await this.bucket.deleteFile(conf.appWriteBucketId,featuredImage)
       throw error;
+      
     }
   }
 
@@ -92,6 +94,7 @@ export class Service {
   //   file upload servicce
   async uploadFile(file) {
     try {
+      console.log(file)
       return await this.bucket.createFile(
         conf.appWriteBucketId,
         ID.unique(),
@@ -99,6 +102,7 @@ export class Service {
       );
     } catch (error) {
       throw error;
+      
     }
   }
   async deleteFile(fileId) {
