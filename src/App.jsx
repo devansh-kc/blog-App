@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-// import "./App.css";
+import "./App.css";
 import { useDispatch } from "react-redux";
 import authService from "./appWrite/auth";
 import { login, logout } from "./Feature/authSlice";

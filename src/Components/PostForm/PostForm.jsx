@@ -19,7 +19,6 @@ function PostForm({ post }) {
   const userData = useSelector((state) => state.auth);
   
   const submit = async (data) => {
-    console.log(data)
     try {
       if (post) {
         const file = data.image[0]
@@ -75,8 +74,8 @@ function PostForm({ post }) {
     return () => subscription.unsubscribe();
   }, [watch, slugTransform, setValue]);
   return (
-    <form onSubmit={handleSubmit(submit)} className="flex flex-wrap">
-      <div className="w-2/3 px-2">
+    <form onSubmit={handleSubmit(submit)} className="inline-flex ">
+      <div className="w-2/3 px-2 my-4">
         <Input
           label="Title :"
           placeholder="Title"
@@ -101,7 +100,7 @@ function PostForm({ post }) {
           defaultValue={getValues("content")}
         />
       </div>
-      <div className="w-1/3 px-2">
+      <div className="w-1/3 px-4">
         <Input
           label="Featured Image :"
           className="mb-4"
