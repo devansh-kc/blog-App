@@ -36,26 +36,21 @@ function Header() {
   ];
 
   return (
-    <header className="relative w-full  p-4 ">
+    <header className="sticky w-full p-6  ">
       <Container>
-        <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 py-2 sm:px-6 lg:px-8">
-          <div className="inline-flex items-center space-x-2">
-            <Link to="/">
-              <Logo width="70px" className="text-white" />
-            </Link>
-          </div>
+        <nav className="mx-auto flex  rounded-full items-center border bg-transparent justify-center px-4 py-2 ">
 
-          <div className="hidden lg:block">
+          <div className="">
             <ul className="inline-flex space-x-8">
               {navItems.map((item) =>
                 item.active ? (
                   <li
                     key={item.name}
-                    className="-m-3 flex items-center rounded-md p-3 text-sm font-semibold hover:bg-gray-50"
+                    className="-m-3 flex items-center  rounded-md p-3 text-sm font-semibold "
                   >
                     <button
                       onClick={() => navigate(item.slug)}
-                      className="inline-block px-6 py-2 duration-200 hover:bg-blue-100 rounded-lg hover:shadow-xl "
+                      className="inline-block px-6 py-2 duration-200 rounded-lg "
                     >
                       {item.name}
                     </button>
@@ -73,7 +68,7 @@ function Header() {
           <input
             type="checkbox"
             value=""
-            className="sr-only peer bg-tahiti-light"
+            className="sr-only peer"
           />
         </nav>
       </Container>

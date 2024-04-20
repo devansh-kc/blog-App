@@ -16,7 +16,7 @@ function LogoutBtn() {
   };
   return (
     <button
-      className="m-3 flex items-center rounded-md p-3  text-sm font-semibold hover:bg-gray-50 hover:shadow-xl hover:duration-200 hover:ease-in-out "
+      className="m-3 flex items-center rounded-md p-3  text-sm font-semibold "
       onClick={logOutHandler}
     >
       Logout
